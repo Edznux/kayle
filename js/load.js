@@ -11,8 +11,11 @@ var loadState = {
         var loadingLabel = game.add.text(80, 150, 'loading...', {font: '30px Courier', fill: '#fff'});
 
         //Load your images, spritesheets, bitmaps...
-        game.load.image('Dall', 'assets/img/dall.png');
-
+        game.load.image('kayle', 'assets/img/kayle.png');
+        game.load.image('tree', 'assets/img/tree.png');
+        game.load.image('grass', 'assets/img/grass.png');
+        game.load.image('player', 'assets/img/player.png');
+        game.load.image('btn-play','assets/img/btn-play.png');
 
         //Load your sounds, efx, music...
         //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
@@ -24,7 +27,7 @@ var loadState = {
 
     create: function() {
 
-        game.stage.setBackgroundColor('#000');
+        game.stage.setBackgroundColor('#DEDEDE');
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         game.state.start('menu');
     }
