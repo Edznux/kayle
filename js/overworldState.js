@@ -19,23 +19,16 @@ var overworldState = {
     cursors:null,
     grass:null,
     seedKey:null,
-    floor:[],
+    floor: null,
+    nbFloorTiles:null,
 
     drawFloor: function(){
-        self.grass = game.cache.getImage('grass');
-        var nbOfTiles = parseInt(game.width / self.grass.width);
-        console.log("nb of tiles", nbOfTiles);
-
-        var tiles = [];
-        var pos;
-
-        for(var i=0; i < nbOfTiles+2; i++){
-            pos = ((i-1)*self.grass.width);
-            //tiles[i] = game.add.sprite(game.camera.x+pos, 400, 'grass');
-            tiles[i] = game.add.sprite(game.camera.x+pos, 400, 'grass');
+        self.nbFloorTiles = parseInt(game.width / TILE_SIZE) + 4;
+        self.floor = game.add.group();
+        var i=0;
+        for(i; i < self.nbFloorTiles; i++) {
+            self.floor.create(i * TILE_SIZE, 464, 'grass');
         }
-        self.floor = tiles;
-
     },
 
     createCastle: function(x, era){
@@ -61,7 +54,6 @@ var overworldState = {
             // random between 0 and 99
 
             rand = parseInt(Math.random()*100);
-            console.log(rand);
             if(rand > 0 ){
                 //console.log(id);
                 id = null;
@@ -84,7 +76,7 @@ var overworldState = {
         // create starting caste in the center
         var center = parseInt(game.world.map.length / 2);
         this.createCastle(center, 0);
-        console.log(game.world.map);
+        //console.log(game.world.map);
     },
 
     create: function(){
@@ -109,9 +101,10 @@ var overworldState = {
 
         // adding player and camera control
         //self.player = game.add.sprite((MAP_LENGTH*TILE_SIZE)/2, 400, 'player');
-        self.player = game.add.sprite(500, 400, 'player');
+        self.player = game.add.sprite((MAP_LENGTH * TILE_SIZE) / 2, 400, 'player');
+        self.player.enableBody = true;
         self.cursors = game.input.keyboard.createCursorKeys();
-        game.camera.follow(player);
+        game.camera.follow(self.player);
 
         //setting up shortcut keys
         game.input.enabled = true;
@@ -119,18 +112,18 @@ var overworldState = {
     },
 
     update: function() {
+         self.floor.forEach(function(tile){
+             //console.log(self.floor[i].x);
+             if(tile.x >= (game.camera.x + game.camera.width + TILE_SIZE)){
+                 tile.x = game.camera.x - TILE_SIZE;
+             }
+             if(tile.x <= game.camera.x - TILE_SIZE){
+                 console.log(game.camera.x);
+                 console.log(tile.x);
+                 tile.x =  game.camera.x + game.camera.width + TILE_SIZE;
+             }
+         }, this);
 
-        // todo : swap tiles OOB
-        for(var i=0; i<self.floor.length; i++){
-            //console.log(self.floor[i]);
-            if(self.floor[i].x < game.world.x){
-                self.floor[i].x = game.world.x + game.camera.width + 32;
-            }
-
-            if(self.floor[i].x > game.world.x + game.camera.width + 32){
-                self.floor[i].x = game.world.x - 32;
-            }
-        }
 
         if(self.seedKey.isDown){
             console.log("Your seed is",getSeed());
