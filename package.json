@@ -1,0 +1,22 @@
+{
+  "name": "kayle",
+  "version": "0.0.0",
+  "description": "Game Development Tool to create Html5 games using [Phaser](http://phaser.io/) Framework. Useful tool for those new to the world of Phaser. Speed up your work with a simple download!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edznux/kayle"
+  },
+  "author": "Edznux",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edznux/kayle/issues"
+  },
+  "homepage": "https://github.com/edznux/kayle",
+  "dependencies": {
+    "seedrandom": "^2.4.2"
+  }
+}
