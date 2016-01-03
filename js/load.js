@@ -13,6 +13,8 @@ var loadState = {
         //Load your images, spritesheets, bitmaps...
         game.load.image('kayle', 'assets/img/kayle.png');
         game.load.image('tree', 'assets/img/tree.png');
+        game.load.image('rock', 'assets/img/rock.png');
+        game.load.image('undefined', 'assets/img/undefined.png');
         game.load.image('grass', 'assets/img/grass.png');
         game.load.image('player', 'assets/img/player.png');
         game.load.image('btn-play','assets/img/btn-play.png');
