@@ -8,10 +8,14 @@ var menuState = {
 
         // var playButton = game.add.text(350, 250, 'Play', {font: '30px Courier', fill: '#fff',align: "center"});
         var playButton = game.add.button(350, 250, 'btn-play', this.play, this, 2, 1, 0);
+        var playButton = game.add.button(350, 350, 'btn-load', this.map, this, 2, 1, 0);
 
     },
     play: function(){
         game.state.start('overworld');
+    },
+    map: function(){
+        game.state.start('menuMap');
     },
     highscore: function(){
         // game.state.start('overworld');

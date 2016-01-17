@@ -18,6 +18,7 @@ var loadState = {
         game.load.image('grass', 'assets/img/grass.png');
         game.load.image('player', 'assets/img/player.png');
         game.load.image('btn-play','assets/img/btn-play.png');
+        game.load.image('btn-load','assets/img/btn-play.png');
 
         //Load your sounds, efx, music...
         //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');

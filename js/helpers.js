@@ -80,3 +80,15 @@ function getSeed(){
 function saveMap(){
     localStorage.setItem("map", game.world.map);
 }
+
+function showInput(placeholder, x, y, id){
+    var input = document.createElement("INPUT");
+        input.type="text";
+        input.placeholder=placeholder;
+        input.style.left=x+"px";
+        input.style.top=y+"px";
+        input.style.position="fixed";
+
+    var container = document.getElementById(game.parent);
+        container.appendChild(input);
+}
